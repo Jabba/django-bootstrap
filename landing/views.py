@@ -1,6 +1,8 @@
+from django.contrib                 import messages
 from django.shortcuts               import render, redirect
 from django.template                import Context
 from django.contrib.auth.decorators import login_required
+from forms import *
 
 # Create your views here.
 def index( request ):
@@ -12,7 +14,18 @@ def about( request ):
     return render( request, "about.html", dict )
 
 def signup( request ):
-    dict = { 'page' : 'signup' }
+    if request.method == 'POST':
+        signupForm = UserSignupForm( request.POST )
+        if signupForm.is_valid():
+            user           = signupForm.save( commit = False )
+            user.is_active = True # set to false for email verification
+            user.save()
+            messages.success( request, "Registration succesfully completed." )
+    else:
+        signupForm = UserSignupForm()
+
+    dict = { 'page' : 'signup', 'signupForm' : signupForm }
+    
     return render( request, "signup.html", dict )
 
 def dashboard( request ):
