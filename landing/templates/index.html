@@ -1,0 +1,31 @@
+{% extends "layout_main.html" %}
+{% load staticfiles %}
+
+{% block content-head %}
+
+<div class="jumbotron" id="banner">
+    <div class="container">
+        <h1>Django Bootstrapped</h1>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2><i class="icsw32-bended-arrow-right"></i> Django Bootstrapped</h2>            
+            This project provides a simple template to start a project with. A
+            few standard features are implemented for landing pages.
+        </div>
+        <div class="col-md-6">
+            <h2>Featuring:</h2>
+            <ul>
+                <li>Django 1.6.5</li>
+                <li>Bootstrap 3.0</li>
+                <li>Signup/login using Django's Authorization Framework</li>
+                <li>Sticky Footer</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

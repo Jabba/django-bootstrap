@@ -1,0 +1,31 @@
+{% extends "layout_main.html" %}
+{% load staticfiles %}
+
+{% block content-head %}
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>About</h1>
+        <p>We are a creative bunch of people who love to code and share</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1><span class="glyphicon glyphicon-heart-empty"></span> Django Bootstrapped!</h1>
+            This project is meant for rapid development. Having simple features in place
+            like <a href="http://getbootstrap.com/" target="_blank">Bootstrap 3.0</a> and 
+            <a href="https://docs.djangoproject.com/en/dev/topics/auth/" target="_blank">
+            Django's authentication framework</a> for registration
+            and login gives a kickstart for your projects.
+        </div>
+        <div class="col-md-6">
+            <h1><span class="glyphicon glyphicon-tree-conifer"></span> Always on the move</h1>
+            But always near Amsterdam! Anyway, here is Google Maps
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d9744.00086422031!2d4.901258169140625!3d52.37041608706485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1snl!2snl!4v1413736515552" width="100%" height="450" frameborder="0" style="border:0"></iframe>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

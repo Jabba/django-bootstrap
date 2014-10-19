@@ -1,0 +1,36 @@
+{% extends "layout_main.html" %}
+{% load staticfiles %}
+
+{% block content-head %}
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>Login</h1>
+        <p>Using <a href="https://docs.djangoproject.com/en/dev/topics/auth/" target="_blank">Django's authentication framework</a> making things easy!</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            <h1><i class="icsw32-bended-arrow-right"></i>Login</h1>
+            <form action="." method="POST">
+              {% csrf_token %}
+              <table>
+                {{ form.as_table }}
+              </table>
+              <input type="submit" value="Login" />
+
+        {% if next %}
+              <input type="hidden" name="next" value="{{ next }}" />
+        {% endif %}
+            </form>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+</div>
+
+{% endblock %}
