@@ -1,7 +1,7 @@
 from django.contrib                 import messages
 from django.shortcuts               import render, redirect
-from django.template                import Context
 from django.contrib.auth.decorators import login_required
+
 from forms import *
 
 # Create your views here.
@@ -28,6 +28,14 @@ def signup( request ):
     
     return render( request, "signup.html", dict )
 
+@login_required
 def dashboard( request ):
     dict = { 'page' : 'dashboard' }
     return render( request, "dashboard.html", dict )
+
+@login_required
+def settings( request ):
+    userChangeForm = UserAccountSettings()
+    dict = { 'page' : 'settings', 'userChangeForm' : userChangeForm }
+    return render( request, "settings.html", dict )
+
