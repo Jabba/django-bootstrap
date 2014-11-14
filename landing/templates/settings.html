@@ -13,10 +13,26 @@
     <div class="row">
         <div class="col-md-6">
             <h2>Your Account</h2>
-            <a href="/password_change">Change password</a>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}            
+            <form action="." method="POST">
+              {% csrf_token %}
+              <table>
+                {{ userChangeForm.as_table }}
+              </table>
+              <input type="submit" class="btn btn-info" value="Submit" /> <a href="/password_change" class="btn btn-danger">Change password</a>
+        {% if next %}
+              <input type="hidden" name="next" value="{{ next }}" />
+        {% endif %}
+            </form>
         </div>
         <div class="col-md-6">
-            <h2>Delete account</h2>
+            <!-- <h2>Delete account</h2> -->
         </div>
     </div>
 </div>

@@ -13,13 +13,12 @@ class UserSignupForm( UserCreationForm ):
         user.save()
         return user
         
-class UserAccountSettings( UserChangeForm ):
+class UserAccountSettings( forms.ModelForm ):
     class Meta:
-        model  = User
-        fields = ( "email", "password" )
+        model   = User
+        exclude = ( "username", "is_superuser", "last_login", 
+                    "is_staff", "is_active", "date_joined", 
+                    "password", "groups", "user_permissions" )
 
     def save( self ):
-        user         = super( UserCreationForm, self ).save()
-        user.email   = self.cleaned_data[ "email" ]
-        user.save()
-        return user
+        user = super( UserAccountSettings, self ).save()
